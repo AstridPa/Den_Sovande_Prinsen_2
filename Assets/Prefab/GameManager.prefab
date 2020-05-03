@@ -46,8 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStartDelay: 2
   turnDelay: 0.1
+  menuReloadDelay: 4
   boardScript: {fileID: 7100193361392865364}
-  playerFoodPoints: 100
+  playerSleepPoints: 100
   playersTurn: 1
 --- !u!114 &7100193361392865364
 MonoBehaviour:
@@ -66,10 +67,15 @@ MonoBehaviour:
   wallCount:
     minimum: 5
     maximum: 9
-  foodCount:
+  sleepCount:
     minimum: 1
     maximum: 5
+  trapCount:
+    minimum: 1
+    maximum: 4
   exit: {fileID: 3319624632320309129, guid: f247c4649645f684f82082308c58b7f0, type: 3}
+  trapTiles:
+  - {fileID: 7877677661477530782, guid: 425d06333689640478ab40f19b4c8cb3, type: 3}
   floorTiles:
   - {fileID: 360090511707424140, guid: 33081a1edcab5514ab9775e6453a48a5, type: 3}
   - {fileID: 1908863408302023132, guid: 6563eb3548243804286dfe8c5133e1ee, type: 3}
