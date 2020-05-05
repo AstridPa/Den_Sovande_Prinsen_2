@@ -9,10 +9,11 @@ public class Player : MovingObject
     public int wallDamage = 1;
     public int pointsPerFood = 10;
     public int pointsPerSoda = 20;
+    public int pointsPerTrap = -10;
     public static int sleep;//ändrad från private
     public float restartLevelDelay = 1f;
     public Text sleepText;
-    public SleepBar sleepBar;
+    public SleepBar sleepBar;//sleepBar
     public AudioClip moveSound1;
     public AudioClip moveSound2;
     public AudioClip eatSound1;
@@ -30,7 +31,8 @@ public class Player : MovingObject
     {
         animator = GetComponent<Animator>();
 
-        sleep = GameMngr.instance.playerSleepPoints;
+        sleep = GameMngr.instance.playerSleepPoints;//sleepBar
+        sleepBar.SetMaxSleep(sleep);
 
         sleepText.text = "Food: " + sleep;
 
@@ -40,7 +42,7 @@ public class Player : MovingObject
 
     private void OnDisable()
     {
-        GameMngr.instance.playerSleepPoints = sleep;
+        GameMngr.instance.playerSleepPoints = sleep;//sleepBar
     }
 
     // Update is called once per frame
@@ -92,6 +94,12 @@ public class Player : MovingObject
         {
             AttemptMove<Wall>(horizontal, vertical);
         }
+    }
+
+    public void TakeDmg()//för trap
+    {
+        sleep += pointsPerTrap;
+        print("Damage");
     }
 
     protected override void AttemptMove <T>(int xDir, int yDir)
@@ -152,6 +160,7 @@ public class Player : MovingObject
         animator.SetTrigger("playerHit");
         sleep -= loss;
         sleepText.text = "-" + loss + " Food: " + sleep;
+        sleepBar.SetSleep(sleep);//sleepBar???
         CheckIfGameOver();
     }
 
