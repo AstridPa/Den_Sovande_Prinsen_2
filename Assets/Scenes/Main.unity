@@ -1055,6 +1055,7 @@ MonoBehaviour:
   wallDamage: 1
   pointsPerFood: 10
   pointsPerSoda: 20
+  pointsPerTrap: -10
   restartLevelDelay: 1
   sleepText: {fileID: 894391792}
   sleepBar: {fileID: 836141054}

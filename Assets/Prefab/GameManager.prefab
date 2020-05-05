@@ -73,7 +73,12 @@ MonoBehaviour:
   trapCount:
     minimum: 1
     maximum: 4
+  keyCount:
+    minimum: 0
+    maximum: 1
   exit: {fileID: 3319624632320309129, guid: f247c4649645f684f82082308c58b7f0, type: 3}
+  door: {fileID: 4170330392232197246, guid: 7703dd22fb8856d4fbdc38a48091907d, type: 3}
+  key: {fileID: 7882974863600156748, guid: aa2bb1c74fd92bd4fa6511774bf4c57f, type: 3}
   trapTiles:
   - {fileID: 7877677661477530782, guid: 425d06333689640478ab40f19b4c8cb3, type: 3}
   floorTiles:

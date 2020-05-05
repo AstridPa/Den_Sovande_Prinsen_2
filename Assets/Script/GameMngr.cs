@@ -13,10 +13,10 @@ public class GameMngr : MonoBehaviour
     public BoardManager boardScript;
     public int playerSleepPoints = 100;//!!
     [HideInInspector] public bool playersTurn = true;
+    public int Level { get; private set; } = 0;
 
     private Text levelText;
     private GameObject levelImage;
-    private int level = 0;
     private List<Enemy> enemies;
     private bool enemiesMoving;
     private bool doingSetup;
@@ -39,7 +39,7 @@ public class GameMngr : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        level++;
+        Level++;
         InitGame();
     }
 
@@ -60,12 +60,12 @@ public class GameMngr : MonoBehaviour
 
         levelImage = GameObject.Find("LevelImage");
         levelText = GameObject.Find("LevelText").GetComponent<Text>();
-        levelText.text = "Floor " + level;
+        levelText.text = "Floor " + Level;
         levelImage.SetActive(true);
         Invoke("HideLevelImage", levelStartDelay);
 
         enemies.Clear();
-        boardScript.SetupScene(level);
+        boardScript.SetupScene(Level);
     }
 
     private void HideLevelImage()
@@ -76,7 +76,7 @@ public class GameMngr : MonoBehaviour
 
     public void GameOver()
     {
-        levelText.text = "After " + level + " floors,\n you fall asleep.";
+        levelText.text = "After " + Level + " floors,\n you fall asleep.";
         levelImage.SetActive(true);
         enabled = false;
         StartCoroutine(BackToMenu());

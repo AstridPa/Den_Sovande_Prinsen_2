@@ -26,6 +26,9 @@ public class Player : MovingObject
 
     private Vector2 touchOrigin = -Vector2.one;
 
+    private int keyLayer, doorLayer;
+    private bool hasKey;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -36,6 +39,8 @@ public class Player : MovingObject
 
         sleepText.text = "Food: " + sleep;
 
+        keyLayer = LayerMask.NameToLayer("Key");
+        doorLayer = LayerMask.NameToLayer("Door");
 
         base.Start();
     }
@@ -141,6 +146,12 @@ public class Player : MovingObject
             SoundManager.instance.RandomizeSfx(drinkSound1, drinkSound2);
             other.gameObject.SetActive(false);
         }
+        else if (other.gameObject.layer == keyLayer)
+        {
+            hasKey = true;
+            other.gameObject.SetActive(false);
+        }
+
     }
 
     protected override void OnCantMove<T> (T component)

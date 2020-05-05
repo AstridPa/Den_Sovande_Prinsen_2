@@ -24,7 +24,10 @@ public class BoardManager : MonoBehaviour
     public Count wallCount = new Count(5, 9);
     public Count sleepCount = new Count(1, 5);
     public Count trapCount = new Count(1, 4);//Trap
+    public Count keyCount = new Count(0, 1); //Key
     public GameObject exit;
+    public GameObject door;
+    public GameObject key;
     public GameObject[] trapTiles; //Trap
     public GameObject[] floorTiles;
     public GameObject[] wallTiles;
@@ -97,7 +100,19 @@ public class BoardManager : MonoBehaviour
         int enemyCount = (int)Mathf.Log(level, 2f);
         LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
         Instantiate(exit, new Vector3(columns - 1, rows - 1, 0f), Quaternion.identity);
-    }
+        
+        bool isEven = GameMngr.instance.Level % 2 == 0;
 
+        if (isEven)
+        {
+            Instantiate(key, RandomPosition(), Quaternion.identity);
+            Instantiate(door, new Vector3(columns - 1, rows - 1, 0f), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(exit, new Vector3(columns - 1, rows - 1, 0f), Quaternion.identity);
+        }
+            
+    }
 
 }
