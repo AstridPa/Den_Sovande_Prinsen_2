@@ -123,7 +123,7 @@ public class Player : MovingObject
         {
             sleep += pointsPerFood;
             sleepText.text = "+" + pointsPerFood + " Food: " + sleep;
-            //SoundManager.instance.RandomizeSfx(eatSound1, eatSound2);
+            SoundManager.instance.RandomizeSfx(eatSound1, eatSound2);
             other.gameObject.SetActive(false);
         }
         else if (other.tag == "Soda")
